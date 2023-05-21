@@ -1,14 +1,15 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { User } from 'src/models/user.model';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private readonly authService: AuthService) {}
-    
+    constructor(private readonly authService: AuthService) { }
+
     @Post('login')
-    async login(@Body() credentials: any) {
-    const userId = await this.authService.login(credentials);
-    const token = await this.authService.generateToken({ userId });
-    return { token };
+    async login(@Body() user: User) {
+        const userId = await this.authService.login(user);
+        const token = await this.authService.generateToken({ userId });
+        return { token };
     }
 }

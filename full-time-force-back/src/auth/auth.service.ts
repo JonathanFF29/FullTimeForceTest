@@ -1,17 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-
+import { User } from 'src/models/user.model';
+import { users } from 'src/services/users.config';
 @Injectable()
 export class AuthService {
   constructor(private readonly jwtService: JwtService) { }
 
-  async login(credentials: any): Promise<string> {
-    try {
-      const token = 'test';
-      return token;
-    } catch (error) {
-      throw new Error('Error');
+  async login(user: User): Promise<any> {
+    const userFind = users.find(u => u.username === user.username && u.password === user.password);
+    if (!userFind) {
+      throw new UnauthorizedException();
     }
+    return userFind;
   }
 
   async generateToken(payload: any): Promise<string> {
