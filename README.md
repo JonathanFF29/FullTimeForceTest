@@ -5,6 +5,12 @@ Backend Installation
 
 2. Install NestJS globally by running the following command:
    npm install -g @nestjs/cli
+   
+Backend configuration
+1. In the root of the backend project create an .env file and add the following variables:
+   API_URL=https://api.github.com
+   GITHUB_OWNER=JonathanFF29
+   GITHUB_REPO=FullTimeForceTest
 
 Backend Execution
 1. Navigate to the backend project directory:
