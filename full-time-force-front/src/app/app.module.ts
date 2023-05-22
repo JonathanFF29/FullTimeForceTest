@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
-import { GitService } from './services/git.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -17,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
     
   ],
-  providers: [AuthService, GitService],
+  providers: [AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
