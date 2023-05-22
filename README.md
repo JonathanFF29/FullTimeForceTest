@@ -15,7 +15,8 @@ Backend configuration
 Backend Execution
 1. Navigate to the backend project directory:
    cd full-time-force-back
-2. Execute the following command to start the backend server in development mode:
+2. npm install
+3. Execute the following command to start the backend server in development mode:
    npm run start:dev
 
 
@@ -25,8 +26,8 @@ Frontend Installation
 Frontend Execution
 1. Navigate to the frontend project directory:
    cd full-time-force-front
-
-2.Execute the following command to start the Angular development server:
+2. npm install
+3. Execute the following command to start the Angular development server:
   ng serve
   
 Important: Ensure that the Angular project is running on the standard port 4200.
