@@ -1,18 +1,20 @@
 <div class="flex justify-center items-center h-screen bg-gray-100">
-    <div class="bg-white p-8 shadow-lg rounded-md">
-      <h2 class="text-2xl font-bold mb-4">Iniciar sesión</h2>
-      <form>
-        <div class="mb-4">
-          <label for="username" class="block text-gray-700">Usuario</label>
-          <input type="text" id="username" class="w-full rounded-md border-gray-300 px-3 py-2 focus:outline-none focus:border-blue-500">
-        </div>
-        <div class="mb-4">
-          <label for="password" class="block text-gray-700">Contraseña</label>
-          <input type="password" id="password" class="w-full rounded-md border-gray-300 px-3 py-2 focus:outline-none focus:border-blue-500">
-        </div>
-        <div>
-          <button type="submit" class="bg-blue-500 text-white rounded-md px-4 py-2">Ingresar</button>
-        </div>
-      </form>
-    </div>
+  <div class="bg-white p-8 shadow-lg rounded-md">
+    <h2 class="text-2xl font-bold mb-4">Iniciar sesión</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="mb-4">
+        <label for="username" class="block text-gray-700">Usuario</label>
+        <input type="text" id="username" class="w-full rounded-md border-gray-300 px-3 py-2 focus:outline-none focus:border-blue-500" formControlName="username">
+        <div *ngIf="loginForm.get('username').invalid && (loginForm.get('username').dirty || loginForm.get('username').touched)" class="text-red-500">Usuario requerido</div>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-gray-700">Contraseña</label>
+        <input type="password" id="password" class="w-full rounded-md border-gray-300 px-3 py-2 focus:outline-none focus:border-blue-500" formControlName="password">
+        <div *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)" class="text-red-500">Contraseña requerida</div>
+      </div>
+      <div>
+        <button type="submit" [disabled]="loginForm.invalid" class="bg-blue-500 text-white rounded-md px-4 py-2">Ingresar</button>
+      </div>
+    </form>
   </div>
+</div>
