@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GitService } from 'src/app/services/git.service';
+import { Commit } from 'src/app/util/models/git.model';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { GitService } from 'src/app/services/git.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  commits: any[] = [];
+  commits: Commit[] = [];
 
   constructor(private gitService: GitService) { }
 
@@ -19,7 +20,6 @@ export class HomeComponent implements OnInit {
     this.gitService.getCommits().subscribe(
       (response: any) => {
         this.commits = response;
-        console.log('commitns', this.commits)
       },
       (error) => {
       }

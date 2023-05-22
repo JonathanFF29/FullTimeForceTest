@@ -11,10 +11,14 @@ import { User } from 'src/app/util/models/user.model';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
+  loginError: boolean = false;
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/home']);
+    }
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -33,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (error) => {
+        this.loginError = true;
       }
     );
   }

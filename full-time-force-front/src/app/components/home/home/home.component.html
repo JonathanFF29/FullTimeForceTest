@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="container mx-auto">
+    <h1 class="text-2xl font-bold text-blue-500 my-4">Lista de Commits</h1>
+  
+    <ul>
+      <li *ngFor="let commit of commits" class="mb-4">
+        <div class="bg-blue-100 p-4 rounded">
+          <h2 class="text-lg font-bold mb-2">{{ commit.commit.message }}</h2>
+          <p class="text-blue-500">Autor: {{ commit.commit.author.name }}</p>
+          <p class="text-blue-500">Fecha: {{ commit.commit.author.date }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
