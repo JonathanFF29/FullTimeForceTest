@@ -1,6 +1,6 @@
 import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { GitService } from './git.service';
-import { JwtInterceptor } from '../interceptors/jwt.interceptor';
+import { JwtInterceptor } from '../utils/interceptors/jwt.interceptor';
 
 
 @Controller('git')
