@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { GitService } from './services/git.service';
+import { TokenInterceptor } from './util/interceptor/interceptor.auth.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
     
   ],
-  providers: [AuthService,],
+  providers: [AuthService, GitService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
