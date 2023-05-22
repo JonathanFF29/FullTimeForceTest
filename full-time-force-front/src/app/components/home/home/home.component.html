@@ -2,12 +2,28 @@
     <h1 class="text-2xl font-bold text-blue-500 my-4">Lista de Commits</h1>
   
     <ul>
-      <li *ngFor="let commit of commits" class="mb-4">
+      <li *ngFor="let commit of getVisibleCommits()" class="mb-4">
         <div class="bg-blue-100 p-4 rounded">
           <h2 class="text-lg font-bold mb-2">{{ commit.commit.message }}</h2>
-          <p class="text-blue-500">Autor: {{ commit.commit.author.name }}</p>
-          <p class="text-blue-500">Fecha: {{ commit.commit.author.date }}</p>
+          <p class="text-black">Autor: {{ commit.commit.author.name }}</p>
+          <p class="text-black">Fecha: {{ commit.commit.author.date }} | </p>
         </div>
       </li>
     </ul>
+    <nav class="flex justify-center mt-4">
+      <ul class="flex items-center">
+        <li>
+          <button [disabled]="currentPage === 1" (click)="goToPage(1)" class="px-2 py-1 rounded-md mr-2" [class.opacity-50]="currentPage === 1">Primera</button>
+        </li>
+        <li>
+          <button [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)" class="px-2 py-1 rounded-md mr-2" [class.opacity-50]="currentPage === 1">Anterior</button>
+        </li>
+        <li>
+          <button [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)" class="px-2 py-1 rounded-md mr-2" [class.opacity-50]="currentPage === totalPages">Siguiente</button>
+        </li>
+        <li>
+          <button [disabled]="currentPage === totalPages" (click)="goToPage(totalPages)" class="px-2 py-1 rounded-md" [class.opacity-50]="currentPage === totalPages">Última</button>
+        </li>
+      </ul>
+    </nav>
   </div>
