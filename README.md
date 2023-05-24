@@ -31,3 +31,8 @@ Frontend Execution
   ng serve
   
 Important: Ensure that the Angular project is running on the standard port 4200.
+
+
+use to log in
+user : user1
+password: password1
